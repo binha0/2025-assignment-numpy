@@ -40,7 +40,10 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
+    n, m = X.shape
+    k = np.argmac(X.reshape(n * m))
+    i = k//m
+    j = k % m 
 
     return i, j
 
@@ -62,6 +65,10 @@ def wallis_product(n_terms):
     pi : float
         The approximation of order `n_terms` of pi using the Wallis product.
     """
-    # XXX : The n_terms is an int that corresponds to the number of
+    # The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0.
+    pi = 1
+    if n_terms > 0:
+        for n in range(n_terms):
+            pi *= (4*n*n)/(4*n*n - 1)
+    return pi * 2
