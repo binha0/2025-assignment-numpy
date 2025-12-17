@@ -43,7 +43,7 @@ def max_index(X):
     n, m = X.shape
     k = np.argmax(X.reshape(n * m))
     i = k//m
-    j = k % m 
+    j = k % m
 
     return i, j
 
