@@ -42,12 +42,12 @@ def max_index(X):
 
     if X is None:
         raise ValueError("Input is not an array")
-    
-    X = np.asarray(X)
-    if X.size == 0:
+    elif type(X).__module__ != np.__name__:
+        raise ValueError("Input is not an array.")
+    elif X.size == 0:
         raise ValueError("Empty array")
-    if len(X.shape) != 2:
-        raise ValueError("Array is not 2D")
+    elif len(X.shape) == 1:
+        raise ValueError("1D array")
     else:
         n, m = X.shape
         k = np.argmax(X.reshape(n * m))
@@ -78,6 +78,6 @@ def wallis_product(n_terms):
     # terms in the product. For example 10000.
     pi = 1
     if n_terms > 0:
-        for n in range(1,n_terms + 1):
+        for n in range(1, n_terms + 1):
             pi *= (4*n*n)/(4*n*n - 1)
     return pi * 2
